@@ -1,0 +1,12 @@
+DETALHES DO SISTEMA:
+        Sistema Operacional: Windows
+        Arquitetura: x64
+        Modelo do Processador: Intel(R) Core(TM) i5-10210U CPU @ 1.60GHz
+        Tempo de Atividade: 6 segundos
+        Tempo de Atividade: 518400 dias
+        Tempo de Atividade: 23 horas
+        Versão do Sistema Operacional: Windows 11 Home Single Language
+        Memória RAM Total: 7.83 GB
+        Memória RAM Disponível: 1.46 GB
+    
+
