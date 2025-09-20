@@ -1,0 +1,32 @@
+// Streams: Flucos de dados continuos, como um rio de informações que podem ser lidas ou escritas de forma incremental
+
+// Buffers: Áreas de memória para armazenar dados temporariamente, especialmente úteis quando trabalhamos com strems
+
+
+// Principais caracteristicas dos Streams
+// 1. Leitura e escrita incremental
+// 2. Eficiência de memória
+// 3. Manipulação de grandes volumes de dados
+// 4. Suporte a operações assíncronas
+
+// Tipos de Streams
+// 1. Readable Streams: Permitem a leitura de dados (ex: fs.create
+// 2. Writable Streams: Permitem a escrita de dados (ex: fs.createWriteStream)
+// 3. Duplex Streams: Permitem tanto a leitura quanto a escrita de dados (ex: net.Socket)
+// 4. Transform Streams: Permitem a transformação dos dados enquanto são lidos ou escritos (ex: zlib.createGzip)
+// 5. PassThrough Streams: Um tipo especial de Transform Stream que apenas passa os dados sem modificá-los (ex: stream.PassThrough)
+
+// Principais caracteristicas dos Buffers
+// 1. Armazenamento temporário de dados binários
+// 2. Manipulação eficiente de dados
+// 3. Conversão entre diferentes formatos de dados
+// 4. Integração com streams
+// 5. Suporte a operações de baixo nível
+
+// Principais métodos e propriedades dos Buffers    
+// 1. Buffer.alloc(size): Cria um novo buffer de tamanho especificado, preenchido com zeros
+// 2. Buffer.from(array): Cria um novo buffer a partir de um array de bytes
+// 3. buffer.length: Retorna o tamanho do buffer em bytes
+// 4. buffer.toString(encoding, start, end): Converte o conteúdo do buffer para uma string usando a codificação especificada
+// 5. buffer.fill(value, start, end): Preenche o buffer com o valor especificado
+// 6. buffer.copy(targetBuffer, targetStart, sourceStart, sourceEnd): Copia dados de um buffer para outro
