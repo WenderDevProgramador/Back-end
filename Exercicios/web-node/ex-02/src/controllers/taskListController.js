@@ -27,6 +27,12 @@ module.exports = {
         const { id } = req.params
         if (!id) throw new Error('Lista de tarefas não encontrada!')
         const taskList = taskListModel.getTaskListById(id)
+
+        if (!taskList) {
+            // se não achou a lista, não tenta renderizar
+            return res.status(404).send("Lista de tarefas não encontrada")
+        }
+
         res.render('show', { taskList })
     },
 
