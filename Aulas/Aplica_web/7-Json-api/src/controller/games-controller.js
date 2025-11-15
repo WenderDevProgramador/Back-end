@@ -1,7 +1,3 @@
-const express = require('express');
-
-const app = express();
-const PORT = 3000;
 
 const games = [
     { id: 1, name: 'Legend of Mana', genres: ['action-rpg'], year: 1999 },
@@ -11,14 +7,40 @@ const games = [
     { id: 5, name: 'Age of Empires 2', genres: ['real-time-strategy'], year: 1999 }
 ]
 
-app.get('/', (req, res) => {
-    res.json({ message: 'Hello, world!' })
-})
+// Representational State Transfer (RESTfull)
 
-app.get('/games', (req, res) => {
+
+module.exports = {
+
+    // GET/games
+    index:  (req, res) => {
     res.json(games);
-})
+},
 
-app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta: \n http://localhost:${PORT}`);
-})
+// GEt/games/:id
+
+show: (req,res) => {
+    const {id} = req.params
+
+    const game = games.find(game => game.id === +id)
+
+    if(!game) {
+        res.status(404)
+        res.json({message: 'Game not found!'})
+    } else {
+        res.json(game)
+    }
+
+
+},
+
+
+// POST/games
+
+
+// PUT /games/:id
+
+
+// DELETE /games/:id
+
+}
