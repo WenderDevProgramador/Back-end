@@ -17,7 +17,7 @@ module.exports = {
         res.json(games);
     },
 
-    // GEt/games/:id
+    // GET/games/:id
 
     show: (req, res) => {
         const { id } = req.params
