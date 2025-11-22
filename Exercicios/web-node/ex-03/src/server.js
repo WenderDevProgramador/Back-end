@@ -1,15 +1,10 @@
-const router = require("./routes");
-
-const express = require(('express'));
+const express = require('express')
+const playlistsRouter = require('./routes')
 const app = express()
-const PORT = 3000;
 
-app.use(express.json());
+app.use(express.json())
 
-app.use('/api',router)
+app.use('/api/playlists', playlistsRouter)
 
-
-app.listen(PORT, () => {
-    console.log(`Servidor iniciado!
-        Acesse em : http://localhost:${PORT}`)
-})
+const PORT = 3000
+app.listen(PORT, () => console.log('Servidor iniciado!'))

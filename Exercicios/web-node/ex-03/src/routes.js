@@ -1,14 +1,15 @@
-const express = require('express');
-const playlistsController = require('./controllers/playlistsController');
+const express = require('express')
+const playlistsController = require('./controllers/playlists-controller')
 
-const router = express.Router();
+const playlistsRouter = express.Router()
 
+playlistsRouter.get('/', playlistsController.index)
+playlistsRouter.get('/:id', playlistsController.show)
+playlistsRouter.post('/', playlistsController.save)
+playlistsRouter.put('/:id', playlistsController.update)
+playlistsRouter.delete('/:id', playlistsController.delete)
 
-router.post('/playlists', playlistsController.save);
-router.get('/playlists', playlistsController.index);
-router.get('/playlists/:id', playlistsController.show);
-router.put('/playlists/:id', playlistsController.update);
-router.delete('/playlists/:id', playlistsController.delete);
+playlistsRouter.post('/:id/musics', playlistsController.addMusic)
+playlistsRouter.delete('/:playlistId/musics/:musicId', playlistsController.removeMusic)
 
-
-module.exports = router;
+module.exports = playlistsRouter
