@@ -1,50 +1,26 @@
-const express = require('express');
-const middlewareC = require('./middlewares/middleware-c');
-const app = express();
+const express = require('express')
+const { middlewareA, middlewareB } = require('./middlewares/test')
+const uploadMiddleware = require('./middlewares/upload')
+const app = express()
 
-app.use((req, res, next) => {
-    console.log('Executando o middleA')
-    req.middlewareA = 'OK!'
-    next()
-
-})
-
-const middlewareB = (req, res, next) => {
-    console.log('Executando o midlleB')
-    req.middlewareB = 'OK também!'
-    next()
-}
-
+app.use(express.static('public'))
+app.use(middlewareA)
 
 app.get('/testeA', (req, res) => {
-    console.log({ a: req.middlewareA, b: req.middlewareB });
-    throw new Error('Algo deu errado aqui!')
+    console.log({ a: req.middlewareA, b: req.middlewareB })
     res.end()
 })
 
-app.get('/testeB',middlewareC, middlewareB, (req, res) => {
-    console.log({ a: req.middlewareA, b: req.middlewareB, c: req.middlewareC });
+app.get('/testeB', middlewareB, (req, res) => {
+    console.log({ a: req.middlewareA, b: req.middlewareB })
     res.end()
 })
 
-
-app.use((err,req, res, next) => {
-    if(err) {
-        console.log(err.message)
-        res.status(400)
-        res.json({message: err.message})
-    } else {
-        next()
-    }
-}) 
-
-
-
-
-
-
-const PORT = 3000;
-app.listen(PORT, () => {
-    console.log(`Servidor iniciado na porta: 
-        \n http://localhost:${PORT}`);
+app.post('/upload', uploadMiddleware.single('image'), (req, res) => {
+    console.log({ a: req.middlewareA, b: req.middlewareB })
+    console.log(req.file, req.body)
+    res.end()
 })
+
+const PORT = process.env.PORT || 3000
+app.listen(PORT, () => console.log(`Servidor iniciado em http://localhost:${PORT}/`))
